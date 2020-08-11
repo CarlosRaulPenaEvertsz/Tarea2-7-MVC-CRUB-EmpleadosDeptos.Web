@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_EMPLEADO>
+
+@{
+    ViewBag.Title = "Lista de Empleados";
+}
+
+<h2>Lista de Empleados</h2>
+
+<p>
+    @Html.ActionLink("Ingresar Nuevo Empleado", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sueldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TBL_DEPARTAMENTO.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sueldo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TBL_DEPARTAMENTO.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "Edit", new { id=item.Codigo }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Codigo }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Codigo })
+        </td>
+    </tr>
+}
+
+</table>
+
+<a href="/Home/Index">Retornar</a>
